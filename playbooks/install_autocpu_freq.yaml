@@ -1,5 +1,5 @@
 - name: Install auto-cpufreq
-  hosts: all
+  hosts: localhost
   tasks:
     - name: Clone auto-cpufreq repository
       ansible.builtin.git:
