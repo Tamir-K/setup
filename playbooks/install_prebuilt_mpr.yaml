@@ -1,5 +1,5 @@
 - name: Install Prebuilt MPR Packages
-  hosts: all
+  hosts: localhost
   tasks:
     - name: Read lsb-release file
       ansible.builtin.slurp:
