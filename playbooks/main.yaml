@@ -1,6 +1,1 @@
-- name: Provision System
-  hosts: localhost
-  become: true
-  tasks:
-    - name: Include install_packages playbook
-      import_playbook: install_packages.yaml
+- import_playbook: install_packages.yaml
