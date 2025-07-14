@@ -3,3 +3,4 @@
 - import_playbook: install_vscodium.yaml
 - import_playbook: install_prebuilt_mpr.yaml
 - import_playbook: install_mega_client.yaml
+- import_playbook: install_zoom.yaml
