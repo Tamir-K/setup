@@ -25,7 +25,7 @@
 
     - name: Install Prism Launcher
       ansible.builtin.apt:
-        name: prism-launcher
+        name: prismlauncher
         state: present
         update_cache: yes
       become: yes
