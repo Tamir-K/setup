@@ -1,5 +1,5 @@
 - name: Install Signal Messenger
-  hosts: all
+  hosts: localhost
   become: yes
   tasks:
     - name: Add Signal repository
