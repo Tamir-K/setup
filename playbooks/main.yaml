@@ -4,3 +4,4 @@
 - import_playbook: install_prebuilt_mpr.yaml
 - import_playbook: install_mega_client.yaml
 - import_playbook: install_zoom.yaml
+- import_playbook: install_autocpu_freq.yaml
