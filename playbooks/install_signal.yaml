@@ -12,11 +12,11 @@
         signed_by: https://updates.signal.org/desktop/apt/keys.asc
         architectures: 
           - amd64
-        become: true
+      become: true
 
     - name: Install Signal
       ansible.builtin.apt:
         name: signal-desktop
         state: present
         update_cache: yes
-        become: true
+      become: true

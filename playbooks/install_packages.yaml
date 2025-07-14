@@ -12,4 +12,4 @@
           - torbrowser-launcher
         update_cache: true
         state: present
-        become: true
+      become: true
