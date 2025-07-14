@@ -1,6 +1,5 @@
 - name: Install Signal Messenger
   hosts: localhost
-  become: yes
   tasks:
     - name: Add Signal repository
       ansible.builtin.deb822_repository:
@@ -13,9 +12,11 @@
         signed_by: https://updates.signal.org/desktop/apt/keys.asc
         architectures: 
           - amd64
+        become: true
 
     - name: Install Signal
       ansible.builtin.apt:
         name: signal-desktop
         state: present
         update_cache: yes
+        become: true

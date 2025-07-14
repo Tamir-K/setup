@@ -1,6 +1,5 @@
 - name: Install VSCodium and Extensions
   hosts: localhost
-  become: yes
   tasks:
     - name: Add VSCodium repository
       ansible.builtin.deb822_repository:
@@ -13,12 +12,14 @@
         signed_by: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
         architectures: 
           - amd64
+        become: true
 
     - name: Install VSCodium
       ansible.builtin.apt:
         name: codium
         state: present
         update_cache: yes
+        become: true
 
     - name: Install VSCodium extensions
       ansible.builtin.command: >
