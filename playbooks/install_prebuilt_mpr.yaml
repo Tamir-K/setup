@@ -1,0 +1,31 @@
+- name: Install Prebuilt MPR Packages
+  hosts: all
+  tasks:
+    - name: Read lsb-release file
+      ansible.builtin.slurp:
+        src: /etc/upstream-release/lsb-release
+      register: lsb_release_content
+
+    - name: Set DISTRIB_CODENAME fact
+      set_fact:
+        distrib_codename: "{{ (lsb_release_content['content'] | b64decode).split('\n') | select('search', '^DISTRIB_CODENAME=') | first | regex_replace('^DISTRIB_CODENAME=', '') }}"
+
+    - name: Add prebuilt-mpr repository
+      ansible.builtin.deb822_repository:
+        name: prebuilt-mpr
+        types: deb
+        uris: https://proget.makedeb.org
+        suites: prebuilt-mpr
+        components: 
+          - "{{ distrib_codename }}"
+        signed_by: https://proget.makedeb.org/debian-feeds/prebuilt-mpr.pub
+        architectures: 
+          - amd64
+      become: yes
+
+    - name: Install Prism Launcher
+      ansible.builtin.apt:
+        name: prism-launcher
+        state: present
+        update_cache: yes
+      become: yes

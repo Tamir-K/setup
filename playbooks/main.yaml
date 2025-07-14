@@ -1,3 +1,4 @@
 - import_playbook: install_packages.yaml
 - import_playbook: install_signal.yaml
 - import_playbook: install_vscodium.yaml
+- import_playbook: install_prebuilt_mpr.yaml
