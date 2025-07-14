@@ -1,0 +1,15 @@
+- name: Install Basic Packages
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Install basic packages
+      ansible.builtin.apt:
+        name:
+          - git
+          - virtualbox
+          - wireshark
+          - steam
+          - texlive-full
+          - torbrowser-launcher
+        update_cache: true
+        state: present
