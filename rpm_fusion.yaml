@@ -1,0 +1,14 @@
+- name: RPM Fusion
+  hosts: localhost
+  tasks:
+    - name: Enable RPM Fusion
+      ansible.builtin.dnf:
+        name:
+          - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm
+          - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_version }}.noarch.rpm
+        state: present
+      become: yes
+
+    - name: Enable Openh264 Codec
+      ansible.builtin.command: dnf config-manager setopt fedora-cisco-openh264.enabled=1
+      become: yes

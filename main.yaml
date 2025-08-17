@@ -1,0 +1,2 @@
+- ansible.builtin.import_playbook: terminal.yaml
+- ansible.builtin.import_playbook: packages.yaml

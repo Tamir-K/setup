@@ -1,0 +1,13 @@
+- name: Signal
+  hosts: localhost
+  tasks:
+    - name: Import OpenSuse build service Signal repo
+      ansible.builtin.get_url:
+        url: https://download.opensuse.org/repositories/network:im:signal/Fedora_{{ ansible_distribution_version }}/network:im:signal.repo
+        dest: /etc/yum.repos.d/network:im:signal.repo
+      become: yes
+
+    - name: Install Signal
+      ansible.builtin.dnf:
+        name: signal-desktop
+      become: yes

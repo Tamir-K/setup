@@ -1,0 +1,15 @@
+- name: Virt Manager
+  hosts: localhost
+  tasks:
+    - name: Install Virt Manager
+      ansible.builtin.dnf:
+        name: virt-manager
+      become: yes
+
+    - name: Add user to QEMU groups
+      ansible.builtin.user:
+        name: "{{ ansible_user_id }}"
+        groups:
+          - libvirt
+          - kvm
+        append: yes
