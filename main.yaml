@@ -67,11 +67,6 @@
     dotfiles_work_tree: "{{ ansible_env.HOME }}"
 
   tasks:
-    - name: Ensure git is installed
-      package:
-        name: git
-        state: present
-
     - name: Clone dotfiles as a bare repo (idempotent)
       git:
         repo: "{{ dotfiles_repo }}"
