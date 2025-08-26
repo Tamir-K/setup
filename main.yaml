@@ -33,7 +33,7 @@
         url: https://zoom.us/linux/download/pubkey
         dest: /etc/pki/rpm-gpg/zoom_pubkey.gpg
         mode: '0644'
-        become: yes
+      become: yes
 
     - name: Install general packages
       ansible.builtin.dnf:
