@@ -31,9 +31,3 @@
 
 - name: Install Virt Manager
   ansible.builtin.import_playbook: virt_manager.yaml
-
-- name: Install Auto-CPUFreq
-  hosts: localhost
-  tasks:
-    - name: Install Auto-CPUFreq
-      script: install_auto_cpufreq.sh
