@@ -60,7 +60,7 @@
   ansible.builtin.import_playbook: tinytex.yaml
 
 - name: Setup Dotfiles
-  hosts: all
+  hosts: localhost
   vars:
     dotfiles_repo: "https://github.com/Tamir-K/dotfiles.git"
     dotfiles_bare_dir: "{{ ansible_env.HOME }}/.dotfiles"
