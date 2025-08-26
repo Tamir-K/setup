@@ -52,3 +52,32 @@
 
 - name: Install TinyTeX
   ansible.builtin.import_playbook: tinytex.yaml
+
+- name: Setup Dotfiles
+  hosts: all
+  vars:
+    dotfiles_repo: "https://github.com/Tamir-K/dotfiles.git"
+    dotfiles_bare_dir: "{{ ansible_env.HOME }}/.dotfiles"
+    dotfiles_work_tree: "{{ ansible_env.HOME }}"
+
+  tasks:
+    - name: Ensure git is installed
+      package:
+        name: git
+        state: present
+
+    - name: Clone dotfiles as a bare repo (idempotent)
+      git:
+        repo: "{{ dotfiles_repo }}"
+        dest: "{{ dotfiles_bare_dir }}"
+        bare: yes
+        update: no
+
+    - name: Checkout bare repo to home
+      command: >
+        git --git-dir={{ dotfiles_bare_dir }} --work-tree={{ dotfiles_work_tree }} checkout
+      args:
+        chdir: "{{ dotfiles_work_tree }}"
+      register: checkout
+      failed_when: checkout.rc not in [0,1]
+      changed_when: checkout.rc == 0
