@@ -30,10 +30,10 @@
 
     - name: Add Zoom GPG key
       ansible.builtin.get_url:
-      url: https://zoom.us/linux/download/pubkey
-      dest: /etc/pki/rpm-gpg/zoom_pubkey.gpg
-      mode: '0644'
-      become: yes
+        url: https://zoom.us/linux/download/pubkey
+        dest: /etc/pki/rpm-gpg/zoom_pubkey.gpg
+        mode: '0644'
+        become: yes
 
     - name: Install general packages
       ansible.builtin.dnf:
