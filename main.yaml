@@ -44,7 +44,7 @@
           - https://mega.nz/linux/repo/Fedora_{{ ansible_distribution_version }}/x86_64/megasync-Fedora_{{ ansible_distribution_version }}.x86_64.rpm # MegaSync
           - https://zoom.us/client/latest/zoom_x86_64.rpm # Zoom
         state: present
-        dnf.disable_gpg_check: yes 
+        disable_gpg_check: yes 
       become: yes
 
 - name: Install Signal
