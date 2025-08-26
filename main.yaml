@@ -28,6 +28,13 @@
       ansible.builtin.command: dnf copr enable -y g3tchoo/prismlauncher
       become: yes
 
+    - name: Add Zoom GPG key
+      ansible.builtin.get_url:
+      url: https://zoom.us/linux/download/pubkey
+      dest: /etc/pki/rpm-gpg/zoom_pubkey.gpg
+      mode: '0644'
+      become: yes
+
     - name: Install general packages
       ansible.builtin.dnf:
         name:
