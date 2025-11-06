@@ -65,9 +65,6 @@
 - name: Install Virt Manager
   ansible.builtin.import_playbook: virt_manager.yaml
 
-- name: Install TinyTeX
-  ansible.builtin.import_playbook: tinytex.yaml
-
 - name: Setup Dotfiles
   hosts: localhost
   vars:
