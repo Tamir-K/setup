@@ -37,6 +37,15 @@
           - prismlauncher
         state: present
       become: yes
+
+    - name: Install TexLive
+      ansible.builtin.dnf:
+        name:
+          - texlive
+          - texlive-amsmath
+          - texlive-dejavu
+        state: present
+      become: yes
       
     - name: Install direct packages
       ansible.builtin.dnf:
