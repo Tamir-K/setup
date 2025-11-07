@@ -67,24 +67,10 @@
 
 - name: Setup Dotfiles
   hosts: localhost
-  vars:
-    dotfiles_repo: "https://github.com/Tamir-K/dotfiles.git"
-    dotfiles_bare_dir: "{{ ansible_env.HOME }}/.dotfiles"
-    dotfiles_work_tree: "{{ ansible_env.HOME }}"
-
   tasks:
-    - name: Clone dotfiles as a bare repo (idempotent)
+    - name: Clone dotfiles
       git:
-        repo: "{{ dotfiles_repo }}"
-        dest: "{{ dotfiles_bare_dir }}"
+        repo: "https://github.com/Tamir-K/dotfiles.git"
+        dest: "{{ ansible_env.HOME }}"
+        separate_git_dir: "{{ ansible_env.HOME }}/.config"
         bare: yes
-        update: no
-
-    - name: Checkout bare repo to home
-      command: >
-        git --git-dir={{ dotfiles_bare_dir }} --work-tree={{ dotfiles_work_tree }} checkout
-      args:
-        chdir: "{{ dotfiles_work_tree }}"
-      register: checkout
-      failed_when: checkout.rc not in [0,1]
-      changed_when: checkout.rc == 0
