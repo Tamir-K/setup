@@ -17,6 +17,7 @@
           - zoxide
           - starship
           - podman
+          - podman-compose
           - gh
         state: present
       become: yes
