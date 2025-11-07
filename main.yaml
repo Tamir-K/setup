@@ -73,5 +73,5 @@
       git:
         repo: "https://github.com/Tamir-K/dotfiles.git"
         dest: "{{ ansible_env.HOME }}"
-        separate_git_dir: "{{ ansible_env.HOME }}/.config"
+        separate_git_dir: "{{ ansible_env.HOME }}/.dotfiles"
         bare: yes
